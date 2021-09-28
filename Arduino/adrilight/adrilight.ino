@@ -1,7 +1,7 @@
 #include "FastLED.h"
 
-#define NUM_LEDS (2*73+2*41)
-#define LED_DATA_PIN 3
+#define NUM_LEDS 270
+#define LED_DATA_PIN 13
 #define BRIGHTNESS 255 //range is 0..255 with 255 beeing the MAX brightness
 
 // --------------------------------------------------------------------------------------------
@@ -13,6 +13,9 @@
 #define MODE_ANIMATION 0
 #define MODE_AMBILIGHT 1
 #define MODE_BLACK 2
+
+#define BUTTER_STRENGTH 3    //higher values = smoother but slower. lower values = less smooth but faster. Default: 10. Minimum = original = 1.
+
 uint8_t mode = MODE_ANIMATION;
 
 uint8_t currentBrightness = BRIGHTNESS;
@@ -42,7 +45,8 @@ void setup()
 
 void loop()
 {
-  switch (mode) {
+  switch (mode) 
+  {
     case MODE_ANIMATION:
       fillLEDsFromPaletteColors();
       break;
@@ -56,10 +60,24 @@ void loop()
       break;
   }
 }
+
+void addButter(byte ledNum)
+{
+  float r = ledsTemp[ledNum].r;
+  float g = ledsTemp[ledNum].g;
+  float b = ledsTemp[ledNum].b;
+
+  leds[ledNum].r = (byte)((r + BUTTER_STRENGTH*leds[ledNum].r)/(BUTTER_STRENGTH+1));
+  leds[ledNum].g = (byte)((g + BUTTER_STRENGTH*leds[ledNum].g)/(BUTTER_STRENGTH+1));
+  leds[ledNum].b = (byte)((b + BUTTER_STRENGTH*leds[ledNum].b)/(BUTTER_STRENGTH+1));
+}
+
 void processIncomingData()
 {
   if (waitForPreamble(TIMEOUT))
   {
+    int blankLeds = 0;
+
     for (int ledNum = 0; ledNum < NUM_LEDS+1; ledNum++)
     {
       //we always have to read 3 bytes (RGB!)
@@ -73,6 +91,13 @@ void processIncomingData()
         byte green = buffer[1];
         byte red = buffer[2];
         ledsTemp[ledNum] = CRGB(red, green, blue);
+
+        // count all leds with luminance greater than 125
+        // (it's a unsaturated color, near white)
+        if(ledsTemp[ledNum].getLuma() > 125)
+        {
+          blankLeds += 1;
+        }
       }
       else if (ledNum == NUM_LEDS)
       {
@@ -85,10 +110,18 @@ void processIncomingData()
           // TODO: can we flip the used buffer instead of copying the data?
           for (int ledNum = 0; ledNum < NUM_LEDS; ledNum++)
           {
-            leds[ledNum]=ledsTemp[ledNum];
+            addButter(ledNum);                                   
+            //leds[ledNum]=ledsTemp[ledNum];
           }
-      
-          if (currentBrightness < BRIGHTNESS)
+
+          // how much "near white" leds must be on
+          // to start reducing the brightness.
+          if(blankLeds >= 25)
+          {
+            if(currentBrightness > 0) currentBrightness--;
+            FastLED.setBrightness(currentBrightness);
+          }
+          else if (currentBrightness < BRIGHTNESS)
           {
             currentBrightness++;
             FastLED.setBrightness(currentBrightness);

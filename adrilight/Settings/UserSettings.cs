@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace adrilight
 {
@@ -17,7 +18,8 @@ namespace adrilight
         private int _borderDistanceX = 0;
         private int _borderDistanceY = 100;
         private string _comPort = null;
-        private string _adrilightVersion = "2.0.7";
+        private int _baudRate = 1000000; 
+        private string _adrilightVersion = "2.0.10";
         private bool _mirrorX = false;
         private bool _mirrorY = false;
         private int _offsetLed = 0;
@@ -44,6 +46,9 @@ namespace adrilight
         private int _configFileVersion = 2;
         private AlternateWhiteBalanceModeEnum _alternateWhiteBalanceMode = AlternateWhiteBalanceModeEnum.Off;
 
+        private bool _uniqueColor = false;
+        private Color _color = Color.FromRgb(0, 0, 0);
+
         //support future config file migration
         public int ConfigFileVersion { get => _configFileVersion; set { Set(() => ConfigFileVersion, ref _configFileVersion, value); } }
 
@@ -52,6 +57,7 @@ namespace adrilight
         public int BorderDistanceX { get => _borderDistanceX; set { Set(() => BorderDistanceX, ref _borderDistanceX, value); } }
         public int BorderDistanceY { get => _borderDistanceY; set { Set(() => BorderDistanceY, ref _borderDistanceY, value); } }
         public string ComPort { get => _comPort; set { Set(() => ComPort, ref _comPort, value); } }
+        public int BaudRate { get => _baudRate; set { Set(() => BaudRate, ref _baudRate, value); } }
 
         public string AdrilightVersion { get => _adrilightVersion; set { Set(() => AdrilightVersion, ref _adrilightVersion, value); } }
 
@@ -74,6 +80,8 @@ namespace adrilight
         public byte WhitebalanceRed { get => _whitebalanceRed; set { Set(() => WhitebalanceRed, ref _whitebalanceRed, value); } }
         public byte WhitebalanceGreen { get => _whitebalanceGreen; set { Set(() => WhitebalanceGreen, ref _whitebalanceGreen, value); } }
         public byte WhitebalanceBlue { get => _whitebalanceBlue; set { Set(() => WhitebalanceBlue, ref _whitebalanceBlue, value); } }
+        public bool UniqueColor { get => _uniqueColor; set { Set(() => UniqueColor, ref _uniqueColor, value); } }
+        public Color Color { get => _color; set { Set(() => Color, ref _color, value); } }
 
         public byte AltWhitebalanceRed { get => _altWhitebalanceRed; set { Set(() => AltWhitebalanceRed, ref _altWhitebalanceRed, value); } }
         public byte AltWhitebalanceGreen { get => _altWhitebalanceGreen; set { Set(() => AltWhitebalanceGreen, ref _altWhitebalanceGreen, value); } }

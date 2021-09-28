@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using adrilight.ValidationRules;
+using Xceed.Wpf.Toolkit;
 
 namespace adrilight.View.SettingsWindowComponents
 {
@@ -26,7 +28,7 @@ namespace adrilight.View.SettingsWindowComponents
             InitializeComponent();
         }
 
-
+        public SettingsViewModel SettingsViewModel { get; }
 
         public class ComPortSetupSelectableViewPart : ISelectableViewPart
         {
@@ -39,9 +41,11 @@ namespace adrilight.View.SettingsWindowComponents
 
             public int Order => 100;
 
-            public string ViewPartName => "Serial Communication Setup";
+            public string ViewPartName => "Настройка связи";
 
             public object Content { get => lazyContent.Value; }
+
         }
+
     }
 }

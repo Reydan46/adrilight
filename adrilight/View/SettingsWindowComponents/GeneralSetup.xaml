@@ -36,10 +36,10 @@
                         <ToggleButton DockPanel.Dock="Right"
                         Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0"
                           ToolTip="Mirror Y" IsChecked="{Binding Settings.Autostart}" />
-                        <TextBlock FontWeight="Bold">Autostart with Windows</TextBlock>
+                        <TextBlock FontWeight="Bold">Автозапуск с Windows</TextBlock>
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Justify" Margin="0 8 0 0">
-                        Enable this to setup adrilight to automatically start with Windows to enjoy adrilight from the first second.
+                        Включите эту настройку для того, что бы adrilight запускался вместе с Windows.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -62,11 +62,11 @@
                         <ToggleButton DockPanel.Dock="Right"
                         Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0"
                           ToolTip="Mirror Y" IsChecked="{Binding Settings.StartMinimized}" />
-                        <TextBlock FontWeight="Bold">Start minimized</TextBlock>
+                        <TextBlock FontWeight="Bold">Запускать свёрнутым</TextBlock>
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Justify" Margin="0 8 0 0">
-                        If you enable this setting, adrilight will not open the Settings-Window on its startup. 
-                        You can still open the settings via a doubleclick on the notifiy icon in the lower right corner next to your clock.
+                        Если вы включите этот параметр, то при запуске главное окно программы не будет показано. Вместо этого программа будет свёрнута в область уведомлений (трей). 
+                        Вы по прежнему сможете открыть окно программы щёлкнув по значку в области уведомлений (нижний правый угол возле часов).
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -86,7 +86,7 @@
                                          HorizontalAlignment="Center" />
 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">Limit FPS</TextBlock>
+                    <TextBlock FontWeight="Bold">Лимит FPS</TextBlock>
                     <DockPanel>
                         <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -96,27 +96,27 @@
                             <TextBox.Text>
                                 <Binding Path="Settings.LimitFps" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <adriValidation:NumberRangeValidationRule Minimum="1" Maximum="100" ValidatesOnTargetUpdated="True" />
+                                        <adriValidation:NumberRangeValidationRule Minimum="1" Maximum="144" ValidatesOnTargetUpdated="True" />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
                         <Slider Minimum="1" 
-                                Maximum="100" 
+                                Maximum="144" 
                                 Style="{StaticResource MaterialDesignDiscreteSlider}" 
                                 Value="{Binding Settings.LimitFps}"/>
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        To save precious CPU cycles, it is possible to limit the FPS. 
+                        Для сохранения драгоценной мощности процессора можно воспользоваться ограничением FPS. 
                         <LineBreak />
                         <LineBreak />
-                        Adrilight will never process more frames than there are. If your screen only changes 24 times per second (=Movie), adrilight only processes 24 frames per second anyway.
+                        Adrilight никогда не обрабатывает больше кадров, чем есть. Если экран меняется только 24 кадра в секунду (стандартный Фильм), adrilight будет обрабатывать только эти 24 кадра.
                         <LineBreak />
                         <LineBreak />
-                        But if you are gaming on a good PC with a high frequency monitor (or with vertical sync disabled) there could be many more frames per second (100+!).
+                        Но если у вас хороший ПК с высокочастотным монитором (или с отключённой вертикальной синхронизацией) количество кадров в секунду может быть намного больше (от 100 и выше!).
                         <LineBreak />
                         <LineBreak />
-                        The microcontroller part of adrilight (and the human eye) cannot nearly process so much frames so it is a good idea to limit the frames. Something between 30 and 60 fps is a good starting point.
+                        Микроконтроллерная часть adrilight (arduino) и человеческий глаз почти не могут обрабатывать такое количество кадров, поэтому рекомендуется ограничить эту цифру. От 30 до 60 кадров в секунду - хорошая отправная точка.
                     </TextBlock>
                 </StackPanel>
             </Grid>

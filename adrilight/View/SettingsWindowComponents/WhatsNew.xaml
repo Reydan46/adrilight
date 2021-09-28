@@ -12,7 +12,7 @@
         FontFamily="{StaticResource MaterialDesignFont}"
              xmlns:local="clr-namespace:adrilight.View.SettingsWindowComponents"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:validationRules="clr-namespace:adrilight.ViewModel.ValidationRules"
+             xmlns:validationRules="clr-namespace:adrilight.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="391.45" d:DesignWidth="991.636">
     <UserControl.Resources>

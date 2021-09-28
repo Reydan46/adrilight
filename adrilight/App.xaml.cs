@@ -101,7 +101,26 @@ namespace adrilight
             _nightLightDetection = kernel.Get<NightLightDetection>();
             _nightLightDetection.Start();
 
+            GlobalHotKey.RegisterHotKey("Ctrl + Alt + 1", () => TransferActive());
+            GlobalHotKey.RegisterHotKey("Ctrl + Alt + 2", () => UniqueColor());
+            GlobalHotKey.RegisterHotKey("Ctrl + Alt + 3", () => SendRandomColors());
+
             kernel.Get<AdrilightUpdater>().StartThread();
+        }
+
+        private void TransferActive()
+        {
+            UserSettings.TransferActive = !UserSettings.TransferActive;
+        }
+        private void SendRandomColors()
+        {
+            UserSettings.SendRandomColors = !UserSettings.SendRandomColors;
+            UserSettings.UniqueColor = false;
+        }
+        private void UniqueColor()
+        {
+            UserSettings.UniqueColor = !UserSettings.UniqueColor;
+            UserSettings.SendRandomColors = false;
         }
 
         private bool IsSupported()
@@ -271,6 +290,7 @@ namespace adrilight
             {
                 VersionNumber = Assembly.GetExecutingAssembly().GetName().Version.ToString(3);
                 IsPrivateBuild = VersionNumber == "0.0.0";
+                VersionNumber = VersionNumber + " (неофициальная)";
                 if (IsPrivateBuild)
                 {
 #if DEBUG

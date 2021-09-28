@@ -39,7 +39,7 @@ namespace adrilight.View.SettingsWindowComponents
 
             public int Order => 50;
 
-            public string ViewPartName => "Spot Detection Setup";
+            public string ViewPartName => "Настройка области захвата";
 
             public object Content { get => lazyContent.Value; }
         }

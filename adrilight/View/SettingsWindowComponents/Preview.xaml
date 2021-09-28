@@ -33,10 +33,10 @@
         <materialDesign:Card Margin="4 4 2 4" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch">
             <StackPanel Margin="38 8 8 8">
                 <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 0 0 0" TextAlignment="Left" FontWeight="Bold">
-                    Performance Warning!
+                    Предупреждение о производительности!
                 </TextBlock>
                 <TextBlock Margin="8" TextWrapping="Wrap">
-                    This preview uses more system resources than adrilight normally does. If you leave the preview page or close the settings window, the preview is no longer created.
+                    Предпросмотр adrilight использует боьше системных ресурсов, чем в нормальном режиме работы. Если вы закроете страницу предпросмотра или закроете окно настроек, предпросмотр более не будет создан.
                 </TextBlock>
             </StackPanel>
         </materialDesign:Card>
@@ -86,8 +86,8 @@
                                 <Rectangle Width="{Binding Rectangle.Width}" Height="{Binding Rectangle.Height}">
                                     <Rectangle.Fill>
                                         <RadialGradientBrush>
-                                            <GradientStop Color="{Binding OnDemandColor}"  Offset="0"/>
-                                            <GradientStop Color="{Binding OnDemandColorTransparent}" Offset="1"/>
+                                            <GradientStop Color="{Binding OnDemandColor}" Offset="0"/>
+                                            <GradientStop Color="{Binding OnDemandColor}" Offset="1"/>
                                         </RadialGradientBrush>
                                     </Rectangle.Fill>
                                 </Rectangle>
@@ -107,14 +107,15 @@
         <materialDesign:Card Margin="4 4 2 4" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch">
             <StackPanel Margin="38 8 8 8">
                 <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 0 0 0" TextAlignment="Left" FontWeight="Bold">
-                    What you should test here...
+                    Для чего нужна данная страница...
                 </TextBlock>
                 <TextBlock Margin="8" TextWrapping="Wrap" TextAlignment="Justify">
-                    You should use this page for testing! If you cannot see your screen content on this page, something might be wrong with screen content reading. Try rebooting or closing of other screen capturing apps.
+                    Вы можете использовать эту страницу для тестирования! Если вы не видите содержимое экрана на данной странице, то возможно что-то не так с захватом изображения вашего экрана.
+                    Попробуйте перезапустить или закрыть другие приложения для захвата экрана.
                     <LineBreak />
-                    The actual rendered LED colors are overlayed so you can see, what color they should have. All color corrections are already applied.
+                    В окне предпросмотра вы видите экран с наложенными на него полями захвата (с уже применёнными цветокорректировками). 
                     <LineBreak />
-                    The <Span Foreground="#FF3333">RED Rectangle</Span> is the first LED of your strip. If this does not match with the physical location of the beginning of your first LED on your LED strip, you may need to change the offset in the LED setup.
+                    <Span Foreground="#FF3333">КРАСНЫЙ прямоугольник</Span> - это первый светодиод в вашей светодиодной ленте. Если его расположение не совпадает с фактическим (физическим) расположением первого светодиода, то вам необходимо изменить смещение светодиодов на странице  Настройка LED.
                 </TextBlock>
             </StackPanel>
         </materialDesign:Card>

@@ -30,7 +30,7 @@
                                          HorizontalAlignment="Center" />
                 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">Horizontal LED Strip Length</TextBlock>
+                    <TextBlock FontWeight="Bold">Количество светодиодов по горизонтали</TextBlock>
                     <DockPanel>
                         <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -50,7 +50,7 @@
                                 Value="{Binding Settings.SpotsX}" />
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        This is the number of LEDs your horizontal strip actually has.
+                        Количество светодиодов на одной горизонтальной полосе ленты.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -68,7 +68,7 @@
                                          HorizontalAlignment="Center" />
                 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">Vertical LED Strip Length</TextBlock>
+                    <TextBlock FontWeight="Bold">Количество светодиодов по вертикали</TextBlock>
                     <DockPanel>
                         <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -88,7 +88,7 @@
                                 Value="{Binding Settings.SpotsY}"/>
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                                This is the number of LEDs your vertical strip actually has.
+                                Количество светодиодов на одной вертикальной полосе ленты.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -105,16 +105,16 @@
                                          HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
                     <DockPanel>
-                        <TextBlock FontWeight="Bold">Complete LED Count</TextBlock>
+                        <TextBlock FontWeight="Bold">Сумарное количество светодиодов</TextBlock>
                         <TextBlock FontWeight="Bold" Text="{Binding LedCount}" 
                                Foreground="{DynamicResource SecondaryAccentBrush}"
                                DockPanel.Dock="Right"
                                TextWrapping="Wrap" HorizontalAlignment="Right" />
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        This is the complete number of LEDs your hardware setup has. 
-                        If your LED strip has actually more 
-                        or less, you should check the settings on this page.
+                        Это сумарное количество светодиодов в вашей ленте. 
+                        Если в вашей светодиодной ленте больше или меньше количество светодиодов
+                        проверьте настройки на данной странице.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -138,22 +138,22 @@
                         <ToggleButton DockPanel.Dock="Right"
                         Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0"
                           ToolTip="Mirror X" IsChecked="{Binding Settings.MirrorX}" />
-                        <TextBlock FontWeight="Bold">Mirror X</TextBlock>
+                        <TextBlock FontWeight="Bold">Отзеркалить X</TextBlock>
                     </DockPanel>
                     <DockPanel Margin="0 8 0 0">
                         <ToggleButton DockPanel.Dock="Right"
                         Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0"
                           ToolTip="Mirror Y" IsChecked="{Binding Settings.MirrorY}" />
-                        <TextBlock FontWeight="Bold">Mirror Y</TextBlock>
+                        <TextBlock FontWeight="Bold">Отзеркалить Y</TextBlock>
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Justify" Margin="0 8 0 0">
-                        Play around with mirroring X and/or Y until the direction of LEDs matches your screen. <LineBreak /><LineBreak />
-                        You are basically changing only between clockwise and counter-clockwise.
+                        Изменяйте данные опции до тех пор, пока направление светодиодной ленты не будет соответствовать вашему. <LineBreak /><LineBreak />
+                        Меняется только направление по часовой стрелке или против часовой.
                     </TextBlock>
 
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify"
                                Foreground="{DynamicResource PrimaryHueMidBrush}">
-                        This will be simplified in a later release!
+                        Это будет упрощено в более поздних релизах!
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -172,7 +172,7 @@
                                          HorizontalAlignment="Center" />
 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">LED Offset</TextBlock>
+                    <TextBlock FontWeight="Bold">Смещение светодиодов</TextBlock>
                     <DockPanel>
                         <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -192,7 +192,7 @@
                                 Value="{Binding Settings.OffsetLed}" />
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        The LED offset describes where your circle of LEDs is starting behind your screen.
+                        Смещение изменяет начальное положение ленты за экраном.
                     </TextBlock>
                 </StackPanel>
             </Grid>

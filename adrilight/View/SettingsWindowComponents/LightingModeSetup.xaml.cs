@@ -39,7 +39,7 @@ namespace adrilight.View.SettingsWindowComponents
 
             public int Order => 60;
 
-            public string ViewPartName => "Lighting Mode Selection";
+            public string ViewPartName => "Выбор режима освещения";
 
             public object Content { get => lazyContent.Value; }
         }

@@ -7,14 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace adrilight.ViewModel.ValidationRules
+namespace adrilight.ValidationRules
 {
-    public class NotEmptyValidationRule : ValidationRule
+    internal class NotEmptyValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             return string.IsNullOrWhiteSpace((value ?? "").ToString())
-                ? new ValidationResult(false, "Field is required.")
+                ? new ValidationResult(false, "Поле, обязательное для заполнения.")
                 : ValidationResult.ValidResult;
         }
     }

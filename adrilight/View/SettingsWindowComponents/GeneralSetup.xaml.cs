@@ -39,7 +39,7 @@ namespace adrilight.View.SettingsWindowComponents
 
             public int Order => 900;
 
-            public string ViewPartName => "General Setup";
+            public string ViewPartName => "Общие настройки";
 
             public object Content { get => lazyContent.Value; }
         }

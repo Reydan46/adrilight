@@ -36,7 +36,7 @@ namespace adrilight.View.SettingsWindowComponents
             }
             public int Order => 10;
 
-            public string ViewPartName => "Physical LED Setup";
+            public string ViewPartName => "Настройка LED";
 
             public object Content { get => lazyContent.Value; }
         }

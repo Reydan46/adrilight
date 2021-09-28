@@ -12,13 +12,13 @@
         FontFamily="{StaticResource MaterialDesignFont}"
              xmlns:local="clr-namespace:adrilight.View.SettingsWindowComponents"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:validationRules="clr-namespace:adrilight.ViewModel.ValidationRules"
-             mc:Ignorable="d" 
-             d:DesignHeight="391.45" d:DesignWidth="991.636">
+             xmlns:validationRules="clr-namespace:adrilight.ValidationRules"
+             mc:Ignorable="d" xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+             d:DesignHeight="673.964" d:DesignWidth="991.636">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
     </UserControl.Resources>
-    <WrapPanel>
+    <WrapPanel Margin="0,0,0,1">
         <materialDesign:Card Margin="4 4 4 4" Width="300">
             <Grid>
                 <Grid.RowDefinitions>
@@ -30,11 +30,11 @@
                 <materialDesign:PackIcon Kind="Settings" Margin="0 8 0 0" Width="132" Height="132"
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center"/>
-                
+
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">COM Port</TextBlock>
+                    <TextBlock FontWeight="Bold">COM-порт</TextBlock>
                     <ComboBox
-                        materialDesign:HintAssist.Hint="COM Port"
+                        materialDesign:HintAssist.Hint="COM-порт"
                         ItemsSource="{Binding AvailableComPorts}">
                         <ComboBox.SelectedValue>
                             <Binding Path="Settings.ComPort" UpdateSourceTrigger="PropertyChanged">
@@ -45,7 +45,24 @@
                         </ComboBox.SelectedValue>
                     </ComboBox>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 22 0 0" TextAlignment="Justify">
-                        This is the COM-Port used for the communication with the arduino.
+                        Данный COM-порт используется для связи с arduino.
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Margin="8 24 8 8" >
+                    <TextBlock FontWeight="Bold">Скорость COM-порта</TextBlock>
+                    <ComboBox
+                        materialDesign:HintAssist.Hint="Скорость COM-порта"
+                        ItemsSource="{Binding AvailableBaudRates}">
+                        <ComboBox.SelectedValue>
+                            <Binding Path="Settings.BaudRate" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <validationRules:NumberRangeValidationRule Minimum="1" Maximum="10000000"  ValidatesOnTargetUpdated="True"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </ComboBox.SelectedValue>
+                    </ComboBox>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 22 0 0" TextAlignment="Justify">
+                        Это скорость COM-порта с которой работает arduino.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -77,12 +94,11 @@
                         <ToggleButton DockPanel.Dock="Right"
                         Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0"
                           ToolTip="Send Random Colors" IsChecked="{Binding Settings.SendRandomColors}" />
-                        <TextBlock FontWeight="Bold">Send Random Colors</TextBlock>
+                        <TextBlock FontWeight="Bold">Случайные цвета</TextBlock>
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        This is a test feature to find errors in the setup. If you turn this on, it will send random colors 
-                        to the arduino instead of the actual detected colors. Number of LEDs is still respected and it only 
-                        works, if you enable sending in the next card.
+                        Это тестовая функция для поиска ошибок в настройке. 
+                        При включении данной опции на Arduino будут отправлены случайные цвета вместо фактически обрануженных.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -104,16 +120,46 @@
                         <ToggleButton DockPanel.Dock="Right" IsEnabled="{Binding TransferCanBeStarted}"
                         Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0"
                           ToolTip="Enable Sending" IsChecked="{Binding Settings.TransferActive}" />
-                        <TextBlock FontWeight="Bold">Enable Sending</TextBlock>
+                        <TextBlock FontWeight="Bold">Включить отправку</TextBlock>
                     </DockPanel>
                     <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" Margin="0 8 0 0" TextWrapping="Wrap" TextAlignment="Justify"
                                Visibility="{Binding TransferCanNotBeStarted, Converter={StaticResource booleanToVisibilityConverter}}">
-                        The sending cannot be enabled because of a validation error. Did you select a valid COM port?
+                        Отправку нельзя включить из-за ошибки проверки. Вы выбрали действующий COM-порт?
                     </TextBlock>
                     <TextBlock TextWrapping="Wrap" Margin="0 8 0 0" TextAlignment="Justify">
-                        This switch controls whether adrilight should actually send color information to the arduino via the selected COM port.
+                        Этот переключатель контролирует, должен ли Adrilight отправлять информацию о цветах на Arduino через выбранный COM-порт.
                     </TextBlock>
                 </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Margin="4 0 4 4" Width="300">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <materialDesign:PackIcon Kind="Paint" Margin="0 8 0 0" Width="132" Height="132"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center"/>
+
+                <StackPanel Grid.Row="1" Margin="8 24 8 8">
+                    <DockPanel>
+                        <ToggleButton DockPanel.Dock="Right"
+                        Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0"
+                          ToolTip="Send Unique Color" IsChecked="{Binding Settings.UniqueColor}" />
+                        <TextBlock FontWeight="Bold">Один цвет</TextBlock>
+                    </DockPanel>
+                    <TextBlock TextWrapping="Wrap" Margin="0 8 0 0" TextAlignment="Justify">
+                        Отправляет на arduino один цвет для всех светодиодов вместо фактически обрануженных. Выберите цвет щёлкнув по полю.
+                    </TextBlock>
+                    <wpfx:ColorPicker Name="ColorPicker1" SelectedColor="{Binding Settings.Color}"  Height="30" DisplayColorAndName="True" 
+                   Margin="0,20,0,0" />
+
+                </StackPanel>
+
+
             </Grid>
         </materialDesign:Card>
     </WrapPanel>

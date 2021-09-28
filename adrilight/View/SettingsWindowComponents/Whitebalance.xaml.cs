@@ -39,7 +39,7 @@ namespace adrilight.View.SettingsWindowComponents
 
             public int Order => 800;
 
-            public string ViewPartName => "White Balance";
+            public string ViewPartName => "Баланс белого";
 
             public object Content { get => lazyContent.Value; }
         }

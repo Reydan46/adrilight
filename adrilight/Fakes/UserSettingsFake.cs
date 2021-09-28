@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using adrilight.Settings;
 
 namespace adrilight.Fakes
@@ -15,6 +16,7 @@ namespace adrilight.Fakes
         public int BorderDistanceX { get; set; } = 33;
         public int BorderDistanceY { get; set; } = 44;
         public string ComPort { get; set; } = "COM7";
+        public int BaudRate { get; set; } = 1000000;
         public DateTime? LastUpdateCheck { get; set; } = DateTime.Now;
         public int LedsPerSpot { get; set; } = 1;
         public bool MirrorX { get; set; } = true;
@@ -44,8 +46,9 @@ namespace adrilight.Fakes
 
         public bool SendRandomColors { get; set; }
         public int LimitFps { get; set; } = 60;
-        public string AdrilightVersion { get; set; } = "2.0.6";
-
+        public string AdrilightVersion { get; set; } = "2.0.10";
+        public bool UniqueColor { get; set; } = false;
+        public Color Color { get; set; } = Color.FromRgb(0, 0, 0);
         public AlternateWhiteBalanceModeEnum AlternateWhiteBalanceMode { get; set; } = AlternateWhiteBalanceModeEnum.Off;
 #pragma warning disable CS0067
         public event PropertyChangedEventHandler PropertyChanged;

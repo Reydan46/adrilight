@@ -44,7 +44,7 @@ namespace adrilight.View.SettingsWindowComponents
 
             public int Order => -50;
 
-            public string ViewPartName => "Whats New?";
+            public string ViewPartName => "О программе";
 
             public object Content => lazyContent.Value;
         }

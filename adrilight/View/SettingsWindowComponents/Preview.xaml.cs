@@ -39,7 +39,7 @@ namespace adrilight.View.SettingsWindowComponents
 
             public int Order => 700;
 
-            public string ViewPartName => "Preview Results";
+            public string ViewPartName => "Предпросмотр результатов";
 
             public object Content { get => lazyContent.Value; }
         }

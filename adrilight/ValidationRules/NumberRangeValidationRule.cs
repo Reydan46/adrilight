@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace adrilight.ValidationRules
 {
-    class NumberRangeValidationRule : ValidationRule
+    internal class NumberRangeValidationRule : ValidationRule
     {
         public int? Minimum { get; set; }
         public int? Maximum { get; set; }
@@ -24,17 +24,17 @@ namespace adrilight.ValidationRules
 
             if (!int.TryParse(stringValue.Trim(), out var intVal))
             {
-                return new ValidationResult(false, "Please enter a number!");
+                return new ValidationResult(false, "Пожалуйста, введите число!");
             }
 
             if (Minimum.HasValue && intVal < Minimum.Value)
             {
-                return new ValidationResult(false, $"Please enter a number greater or equal to {Minimum}!");
+                return new ValidationResult(false, $"Пожалуйста, введите число больше или равное {Minimum}!");
             }
 
             if (Maximum.HasValue && intVal > Maximum.Value)
             {
-                return new ValidationResult(false, $"Please enter a number less than or equal to {Maximum}!");
+                return new ValidationResult(false, $"Пожалуйста, введите число меньше или равное {Maximum}!");
             }
 
             return ValidationResult.ValidResult;

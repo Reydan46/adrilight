@@ -44,11 +44,11 @@
             <DockPanel>
                 <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                     <StackPanel>
-                        <Button Content="Project Page" Command="{Binding OpenUrlProjectPageCommand}"/>
-                        <Button Content="I have an issue..." Command="{Binding OpenUrlIssuesPageCommand}"/>
-                        <Button Content="Latest Release" Command="{Binding OpenUrlLatestReleaseCommand}"/>
+                        <Button Content="Страница проекта" Command="{Binding OpenUrlProjectPageCommand}"/>
+                        <Button Content="У меня проблема..." Command="{Binding OpenUrlIssuesPageCommand}"/>
+                        <Button Content="Последний релиз" Command="{Binding OpenUrlLatestReleaseCommand}"/>
                         <Separator/>
-                        <Button Content="Exit adrilight" Command="{Binding ExitAdrilight}"/>
+                        <Button Content="Выйти из adrilight" Command="{Binding ExitAdrilight}"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="{Binding Title}" />

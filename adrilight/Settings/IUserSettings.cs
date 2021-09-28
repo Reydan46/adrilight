@@ -1,6 +1,7 @@
 ﻿using adrilight.Settings;
 using System;
 using System.ComponentModel;
+using System.Windows.Media;
 
 namespace adrilight
 {
@@ -11,6 +12,7 @@ namespace adrilight
         int BorderDistanceX { get; set; }
         int BorderDistanceY { get; set; }
         string ComPort { get; set; }
+        int BaudRate { get; set; } 
 
         bool MirrorX { get; set; }
         bool MirrorY { get; set; }
@@ -35,7 +37,8 @@ namespace adrilight
         byte AltWhitebalanceRed { get; set; }
         byte AltWhitebalanceGreen { get; set; }
         byte AltWhitebalanceBlue { get; set; }
-
+        bool UniqueColor { get; set; }
+        Color Color { get; set; }
         bool SendRandomColors { get; set; }
 
         int LimitFps { get; set; }

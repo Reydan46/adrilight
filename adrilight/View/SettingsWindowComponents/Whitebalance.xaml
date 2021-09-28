@@ -29,25 +29,25 @@
         <materialDesign:Card Margin="4 4 2 4" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch">
             <StackPanel Margin="38 8 8 8">
                 <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 0 0 0" TextAlignment="Left" FontWeight="Bold">
-                    Why you need white balance and how to do it!
+                    Зачем нужен баланс белого и что с ним делать?
                 </TextBlock>
                 <TextBlock Margin="8" TextWrapping="Wrap"  TextAlignment="Justify">
-                    If you think of some neutral white like a piece of paper, what color does it actually have? Well that depends on the light. Your TV or monitor can display a neutral white or grey also with a warm or cold tint making it more blueish like daylight or making it more yellowish like artifical lighting. Also the LED strip you are using may have its own tint as well.
+                    Если вы думаете о нейтральном цвете как о листе бумаги, то какого цвета он на самом деле? Ну это зависит от света. Ваш телевизор или монитор может отображать как нейтральный белый, так и серый цвет, а так же с тёплым или холодным оттенком, делая его более голубоватым, как дневной свет, или делая его более желтоватым, как искуственное освещение. Так же светодиодная лента, что вы используете, может иметь свой оттенок.
                     <LineBreak />
                     <LineBreak />
                     
-                    What you need to do is: 
+                    Для корректировки вам необходимо сделать: 
                     <LineBreak />
-                    1. Make your room as dark as possible to reduce the interference from other light sources.
+                    1. Сделайте свою комнату как можно более тёмной, что бы уменьшить влияние других источников света.
                     <LineBreak />
-                    2. Setup your TV or monitor screen as you see fit.
+                    2. Установите экран телевизора или монитор так, как он планируется использоваться в будущем.
                     <LineBreak />
-                    3. Then display some grey content on the screen and adjust the sliders on this page until the color of the LEDs matches the color of your TV.
+                    3. Откройне на экране некое СЕРОЕ содержимое и отрегулируйте ползунки на этой странице так, что бы цвет светодиодов соответствовал цвету на экране.
                     <LineBreak />
                     <LineBreak />
-                    Bonus tip: try to leave the sliders as far on the right as you can. 
-                    Turning them too low will reduce maximum LED brightness and the overall dynamic range of the LEDs.
-                    At least one of them should always be on 100.
+                    Бонусный совет: постарайтесь оставлять ползунки как можно ближе к правому положению (к 100). 
+                    Слишком большое изменение (низкие значения) могут уменьшить яркость светодиодов и общий динамический диапазон светодиодной ленты.
+                    Хотя бы один из ползунков должен быть всегда на отметке 100.
                 </TextBlock>
             </StackPanel>
         </materialDesign:Card>
@@ -69,12 +69,12 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" FontWeight="Bold">
-                    Normal Day Light Whitebalance
+                    Баланс белого при дневном свете (стандартный)
                 </TextBlock>
 
-                <TextBlock Grid.Row="1" VerticalAlignment="Bottom">Red</TextBlock>
-                <TextBlock Grid.Row="2" VerticalAlignment="Bottom">Green</TextBlock>
-                <TextBlock Grid.Row="3" VerticalAlignment="Bottom">Blue</TextBlock>
+                <TextBlock Grid.Row="1" VerticalAlignment="Bottom">Красный</TextBlock>
+                <TextBlock Grid.Row="2" VerticalAlignment="Bottom">Зелёный</TextBlock>
+                <TextBlock Grid.Row="3" VerticalAlignment="Bottom">Синий</TextBlock>
 
                 <Slider Grid.Row="1" Grid.Column="1" Width="200" IsEnabled="{Binding IsInDaylightLightMode}"
                     Minimum="1" Maximum="100" Value="{Binding Settings.WhitebalanceRed}" 
@@ -109,12 +109,12 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" FontWeight="Bold">
-                    Alternative Night Light Whitebalance
+                    Баланс белого при ночном свете (альтернативный)
                 </TextBlock>
 
-                <TextBlock Grid.Row="1" VerticalAlignment="Bottom">Red</TextBlock>
-                <TextBlock Grid.Row="2" VerticalAlignment="Bottom">Green</TextBlock>
-                <TextBlock Grid.Row="3" VerticalAlignment="Bottom">Blue</TextBlock>
+                <TextBlock Grid.Row="1" VerticalAlignment="Bottom">Красный</TextBlock>
+                <TextBlock Grid.Row="2" VerticalAlignment="Bottom">Зелёный</TextBlock>
+                <TextBlock Grid.Row="3" VerticalAlignment="Bottom">Синий</TextBlock>
 
                 <Slider Grid.Row="1" Grid.Column="1" Width="200" IsEnabled="{Binding IsInNightLightMode}"
                     Minimum="1" Maximum="100" Value="{Binding Settings.AltWhitebalanceRed}" 
@@ -137,11 +137,11 @@
 
         <materialDesign:Card Margin="4 4 2 4" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch">
             <StackPanel Margin="38 28 38 18">
-                <TextBlock FontWeight="bold">Controling alternate night light mode detection/usage:</TextBlock>
+                <TextBlock FontWeight="bold">Управление обнаружением/использованием баланса белого при ночном свете (альтернативного):</TextBlock>
 
-                <TextBlock Margin="58 18 38 8" FontWeight="bold">Selected mode:</TextBlock>
+                <TextBlock Margin="58 18 38 8" FontWeight="bold">Выбранный режим:</TextBlock>
                 <ComboBox Margin="58 0 0 40" 
-                          Width="150" 
+                          Width="146" 
                           HorizontalAlignment="Left" 
                           ItemsSource="{Binding AlternateWhiteBalanceModes}"
                           DisplayMemberPath="Value"
@@ -199,9 +199,9 @@
                         </materialDesign:PackIcon.RenderTransform>
                     </materialDesign:PackIcon>
 
-                    <TextBlock Margin="58 8 18 38" FontWeight="Bold" Grid.Row="0" Grid.Column="0">Forced On</TextBlock>
+                    <TextBlock Margin="58 8 18 38" FontWeight="Bold" Grid.Row="0" Grid.Column="0">Всегда включён</TextBlock>
 
-                    <TextBlock Margin="58 8 18 38" FontWeight="Bold" Grid.Row="1" Grid.Column="0">Auto detect</TextBlock>
+                    <TextBlock Margin="58 8 18 38" FontWeight="Bold" Grid.Row="1" Grid.Column="0">Автоматически</TextBlock>
                     <TextBlock Margin="2,59,72.4,49.4" FontWeight="Bold" Grid.Column="0"
                                RenderTransformOrigin="0.5,0.5" Foreground="#FFFD7474" TextDecorations="{x:Null}" Grid.RowSpan="2">
                         <TextBlock.RenderTransform>
@@ -211,25 +211,22 @@
                                 <RotateTransform Angle="-7.268"/>
                                 <TranslateTransform/>
                             </TransformGroup>
-                        </TextBlock.RenderTransform>EXPERIMENTAL!</TextBlock>
+                        </TextBlock.RenderTransform>ЭКСПЕРИМЕНТАЛЬНО!</TextBlock>
 
-                    <TextBlock Margin="58 8 18 38" FontWeight="Bold" Grid.Row="2" Grid.Column="0">Forced Off</TextBlock>
+                    <TextBlock Margin="58 8 18 38" FontWeight="Bold" Grid.Row="2" Grid.Column="0">Всегда выключен</TextBlock>
 
                     <TextBlock Margin="8 0 50 0" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" TextAlignment="Justify">
-                        This mode <Italic>enables</Italic> the alternate whitebalance without any other external source 
-                        of information. You basically have to decide on your own when to use this or not
+                        Этот режим <Span Foreground="#FF00D0FF"><Italic>включает</Italic></Span> альтернативный баланс белого принудительно (то есть вы сами решаете, когда использовать, а когда нет переключая опцию вручную).
                     </TextBlock>
                     <TextBlock Margin="8 0 50 0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" TextAlignment="Justify">
-                        This mode tries to detect the actual night light mode of Windows to switch automatically 
-                        the mode at the same time. Consider this mode as <Span Foreground="#FFFD7474">experimental</Span>. 
+                        Этот режим пытается определить ночной режим Windows и изменяет режим баланса белого автоматически. Данный режим является <Span Foreground="#FFFD7474">экспериментальным</Span>. 
                         <LineBreak/>
                         <Hyperlink Command="{Binding OpenNightlightMdPageCommand}" Foreground="#FF84C1FF">
-                            Learn how it works and how to report errors
+                            Узнать как это работает и как сообщить об ошибках
                         </Hyperlink>
                     </TextBlock>
                     <TextBlock Margin="8 0 50 0" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" TextAlignment="Justify">
-                        This mode <Italic>disables</Italic> the alternate whitebalance without any other external source 
-                        of information. You basically have to decide on your own when to use this or not.
+                        Этот режим <Span Foreground="#FF00D0FF"><Italic>отключает</Italic></Span> альтернативный баланс белого принудительно (то есть вы сами решаете, когда использовать, а когда нет переключая опцию вручную).
                     </TextBlock>
                 </Grid>
             </StackPanel>

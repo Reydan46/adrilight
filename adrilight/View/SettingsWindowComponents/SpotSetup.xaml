@@ -18,16 +18,16 @@
         <materialDesign:Card Margin="4 4 4 0">
             <StackPanel Margin="8 8 8 8">
                 <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 0 0 0" TextAlignment="Justify" FontWeight="Bold">
-                    What is a spot?
+                    Что такое область захвата?
                 </TextBlock>
                 <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                    A spot is a screen region. Adrilight fetches the screen content and computes the average color in this region. It will then transmit this color to the corresponding LED. There is a spot for each LED.
+                    Область захвата - это область экрана в которой Adrilight получает содержимое, вычисляет сведний цвет и после отправляет этот цвет на соответствующий светодиод. Для каждого светодиода есть своя область.
                     <LineBreak/>
                     <LineBreak/>
-                    You can control the size of each spot. A small spot will more accurately reproduce the scene details but tends to flicker. A larger spot will reproduce the feeling of a scene like dark, blueish, warm, ...
+                    Вы можете изменять размер каждой области захвата. Небольшая область более точно показывает детали сцены, но имеет тенденцию мерцать. Более крупная область захвата будет давать ощущение сцены, к примеру тёмное, голубоватое, тёплое, ...
                     <LineBreak/>
                     <LineBreak/>
-                    You can also control the distance of the spots from the screen edges. this can help if you want to "ignore" black bars in movies or your windows taskbar for example.
+                    Так же вы можете изменять расстояние от краёв экрана до области захвата (отступ). Это нужно, если вы хотите, например, "игнорировать" чёрные полосы в фильмах или панель задач Windows.
                 </TextBlock>
             </StackPanel>
         </materialDesign:Card>
@@ -46,7 +46,7 @@
                                          HorizontalAlignment="Center" />
 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">Spot Width</TextBlock>
+                    <TextBlock FontWeight="Bold">Ширина области захвата</TextBlock>
                         <DockPanel>
                             <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -66,7 +66,7 @@
                                 Value="{Binding Settings.SpotWidth}" />
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        This is the width in pixels of a single spot used to detect the color for a single LED pixel. A smaller number will yield sharper image reproduction behind your screen. A larger number will yield a feeling for the base color of a movie scene. Try to start with a value of 30.
+                        Ширина области захвата в пикселях. Меньшее значение привёдёт к более детальной визуализации изображения за экраном. Большее значение создаст фоновой цвет сцены фильма. Попробуйте начать со значения 30.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -85,7 +85,7 @@
                                          HorizontalAlignment="Center" />
 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">Spot Height</TextBlock>
+                    <TextBlock FontWeight="Bold">Высота области захвата</TextBlock>
                         <DockPanel>
                             <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -105,7 +105,7 @@
                                 Value="{Binding Settings.SpotHeight}" />
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        This is the height of a single spot in pixels. Start with keeping this value the same as the spot width and try around from there.
+                        Высота области захвата в пикселях. Начните со значения равного ширине области захвата.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -124,7 +124,7 @@
                                          HorizontalAlignment="Center" />
 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">Border Distance X</TextBlock>
+                    <TextBlock FontWeight="Bold">Отступ по X</TextBlock>
                     <DockPanel>
                             <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -144,7 +144,7 @@
                                 Value="{Binding Settings.BorderDistanceX}" />
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        The horizontal distance between the screen edge and the start of each spot in pixels. Start with a value of 0.
+                        Расстояние по горизонтали от края экрана до области захвата в пикселях. Начните со значения 0.
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -163,7 +163,7 @@
                                          HorizontalAlignment="Center" />
 
                 <StackPanel Grid.Row="1" Margin="8 24 8 8" >
-                    <TextBlock FontWeight="Bold">Border Distance Y</TextBlock>
+                    <TextBlock FontWeight="Bold">Отступ по Y</TextBlock>
                         <DockPanel>
                             <TextBox DockPanel.Dock="Right"
                                 MinWidth="50"
@@ -183,9 +183,8 @@
                                 Value="{Binding Settings.BorderDistanceY}" />
                     </DockPanel>
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="0 8 0 0" TextAlignment="Justify">
-                        The vertical distance betweend the screen edge and the start of each spot in pixels. 
-                        If you want adrilight to ignore your windows taskbar or the common black bars in movies, 
-                        you should start with a value of maybe 100. Otherwise use 0.
+                        Расстояние по вертикали от края экрана до области захвата в пикселях. 
+                        Если вы хотите, чтобы adrilight игнорировал чёрные полосы в фильмах или панель задач Windows установите значение, к примеру 100. В иных случаях установите значение 0.
                     </TextBlock>
                 </StackPanel>
             </Grid>

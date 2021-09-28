@@ -118,6 +118,7 @@ namespace adrilight
             lock (SpotSet.Lock)
             {
                 const int colorsPerLed = 3;
+                //int bufferLength = 0;
                 int bufferLength = _messagePreamble.Length
                     + (SpotSet.Spots.Length * colorsPerLed)
                     + _messagePostamble.Length;
@@ -131,22 +132,32 @@ namespace adrilight
                 var allBlack = true;
                 foreach (Spot spot in SpotSet.Spots)
                 {
-                    if (!UserSettings.SendRandomColors)
-                    {
-                        outputStream[counter++] = spot.Blue; // blue
-                        outputStream[counter++] = spot.Green; // green
-                        outputStream[counter++] = spot.Red; // red
-
-                        allBlack = allBlack && spot.Red == 0 && spot.Green == 0 && spot.Blue == 0;
-                    }
-                    else
+                    if (UserSettings.SendRandomColors)
                     {
                         allBlack = false;
+
+
                         var n = frameCounter % 360;
                         var c = ColorUtil.FromAhsb(255, n, 1, 0.5f);
                         outputStream[counter++] = c.B; // blue
                         outputStream[counter++] = c.G; // green
                         outputStream[counter++] = c.R; // red
+                    }
+                    else if (UserSettings.UniqueColor)
+                    {
+                        allBlack = false;
+
+                        outputStream[counter++] = (byte)UserSettings.Color.B; // blue
+                        outputStream[counter++] = (byte)UserSettings.Color.G; // green
+                        outputStream[counter++] = (byte)UserSettings.Color.R; // red
+                    }
+                    else
+                    {
+                        allBlack = allBlack && spot.Red == 0 && spot.Green == 0 && spot.Blue == 0;
+
+                        outputStream[counter++] = spot.Blue; // blue
+                        outputStream[counter++] = spot.Green; // green
+                        outputStream[counter++] = spot.Red; // red
                     }
                 }
 
@@ -178,7 +189,6 @@ namespace adrilight
             {
                 try
                 {
-                    const int baudRate = 1000000;
                     string openedComPort = null;
 
                     while (!cancellationToken.IsCancellationRequested)
@@ -189,7 +199,7 @@ namespace adrilight
                             serialPort?.Close();
                             
                             serialPort = UserSettings.ComPort!= "Fake Port" 
-                                ? (ISerialPortWrapper) new WrappedSerialPort(new SerialPort(UserSettings.ComPort, baudRate)) 
+                                ? (ISerialPortWrapper) new WrappedSerialPort(new SerialPort(UserSettings.ComPort, UserSettings.BaudRate)) 
                                 : new FakeSerialPort();
 
                             try
@@ -227,7 +237,7 @@ namespace adrilight
                         //receiving over serial takes it time as well and the arduino does both tasks in sequence
                         //+1 ms extra safe zone
                         var fastLedTime = (streamLength - _messagePreamble.Length - _messagePostamble.Length) /3.0*0.030d;
-                        var serialTransferTime = streamLength * 10.0*1000.0/ baudRate;
+                        var serialTransferTime = streamLength * 10.0*1000.0/ UserSettings.BaudRate;
                         var minTimespan = (int) (fastLedTime + serialTransferTime) + 1;
 
                         Thread.Sleep(minTimespan);
@@ -248,9 +258,19 @@ namespace adrilight
 
                     //to be safe, we reset the serial port
                     if (serialPort != null && serialPort.IsOpen)
-                    {
-                        serialPort.Close();
-                    }
+                        try
+                        {
+                            serialPort.Close();
+                            if (serialPort != null && serialPort.IsOpen)
+                            {
+                                serialPort.Close();
+                            }
+                            serialPort?.Dispose();
+                        }
+                        catch (Exception)
+                        {
+                            // possible IoException when device is unplugged
+                        }
                     serialPort?.Dispose();
                     serialPort = null;
 
